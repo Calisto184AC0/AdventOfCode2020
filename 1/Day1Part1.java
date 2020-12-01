@@ -22,6 +22,7 @@ public class Day1Part1 {
             for (int j = i + 1; j < lines.size() && !find; j++) {
                 if (lines.get(i) + lines.get(j) == 2020) {
                     System.out.println(lines.get(i) * lines.get(j));
+                    find = true;
                 }
             }
         }
