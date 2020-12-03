@@ -8,6 +8,15 @@ import java.util.List;
  */
 public class Day3Part2 {
 
+    static class Coordinate {
+    
+        public int right, down;
+        Coordinate(int right, int down) {
+            this.right = right;
+            this.down = down;
+        }
+    }
+
     public static void main(String[] args) throws Exception {
         String file = "3/input";
         BufferedReader br = null;
@@ -19,51 +28,24 @@ public class Day3Part2 {
 
         String aux = "";
         int cont = 0;
-        long res;
+        long res = 1;
 
-        // right 1 down 1
-        for (int i = 1; i < lines.size(); i++) {
-            aux = lines.get(i);
-            if (aux.charAt(i % aux.length()) == '#') { cont++; }
+        Coordinate[] coordinates = {
+            new Coordinate(1, 1),
+            new Coordinate(3, 1),
+            new Coordinate(5, 1),
+            new Coordinate(7, 1),
+            new Coordinate(1, 2)
+        };
+
+        for (Coordinate coordinate : coordinates) {
+            cont = 0;
+            for (int i = coordinate.down; i < lines.size(); i += coordinate.down) {
+                aux = lines.get(i);
+                if (aux.charAt(((i / coordinate.down) * coordinate.right) % aux.length()) == '#') { cont++; }
+            }
+            res *= cont;
         }
-
-        res = cont;
-        cont = 0;
-
-        // right 3 down 1
-        for (int i = 1; i < lines.size(); i++) {
-            aux = lines.get(i);
-            if (aux.charAt((i * 3) % aux.length()) == '#') { cont++; }
-        }
-
-        res *= cont;
-        cont = 0;
-
-        // right 5 down 1
-        for (int i = 1; i < lines.size(); i++) {
-            aux = lines.get(i);
-            if (aux.charAt((i * 5) % aux.length()) == '#') { cont++; }
-        }
-
-        res *= cont;
-        cont = 0;
-
-        // right 7 down 1
-        for (int i = 1; i < lines.size(); i++) {
-            aux = lines.get(i);
-            if (aux.charAt((i * 7) % aux.length()) == '#') { cont++; }
-        }
-
-        res *= cont;
-        cont = 0;
-
-        // right 1 down 2
-        for (int i = 2; i < lines.size(); i = i + 2) {
-            aux = lines.get(i);
-            if (aux.charAt((i/2) % aux.length()) == '#') { cont++; }
-        }
-
-        res *= cont;
 
         System.out.println(res);
 
