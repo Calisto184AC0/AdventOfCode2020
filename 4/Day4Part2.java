@@ -64,7 +64,7 @@ public class Day4Part2 {
                     case "hcl":
                         if (pair.value.isEmpty()) { break; }
 
-                        if (pair.value.substring(0,1).equals("#") && pair.value.substring(1).matches("[0-9a-f]{6}")) { cont++; }
+                        if (pair.value.matches("[#][0-9a-f]{6}")) { cont++; }
 
                         break;
                     
