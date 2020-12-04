@@ -71,13 +71,7 @@ public class Day4Part2 {
                     case "ecl":
                         if (pair.value.isEmpty()) { break; }
 
-                        if (pair.value.equals("amb")
-                            || pair.value.equals("blu")
-                            || pair.value.equals("brn")
-                            || pair.value.equals("gry")
-                            || pair.value.equals("grn")
-                            || pair.value.equals("hzl")
-                            || pair.value.equals("oth")) { cont++; }
+                        if (pair.value.matches("amb|blu|brn|gry|grn|hzl|oth")) { cont++; }
 
                         break;
                     
