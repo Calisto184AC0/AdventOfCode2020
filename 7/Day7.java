@@ -65,24 +65,11 @@ class Contain {
     }
 }
 
-class Edge {
-    Bag origin, end;
-    int weight;
-
-    Edge(Bag origin, int weight, Bag end) {
-        this.origin = origin;
-        this.end = end;
-        this.weight = weight;
-    }
-}
-
 class Graph {
-    List<Edge> edges;
     List<String> colors;
     Hashtable <String, Bag> bags;
 
     Graph() {
-        edges = new ArrayList<>();
         colors = new ArrayList<>();
         bags = new Hashtable<>();
     }
@@ -95,7 +82,6 @@ class Graph {
 
     // add edges
     public void bagContainsBag(Bag origin, Bag end, int weight) {
-        edges.add(new Edge(origin, weight, end));
         bags.get(origin.color).contains.add(new Contain(weight, end));
     }
 
